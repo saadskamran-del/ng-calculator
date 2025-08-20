@@ -16,13 +16,40 @@ export class App {
   secondNumber: number | undefined;
   // variable to store operator
   operator: string | undefined;
+  // variable to store history
+  history: string | undefined;
   // variable to store result
-  result: string | undefined;
+  result: number | undefined;
 
   addNumberValueToVariable(numberValue: number) {
     // code that needs to be executes
     console.log('Number clicked: ', numberValue);
-    this.firstNumber = numberValue;
-    this.result = this.firstNumber.toString();
+    // check if operator is already set
+    if (this.operator) {
+      // if operator is set, then it means we are entering the second number
+      this.secondNumber = numberValue;
+      this.history =
+        this.firstNumber?.toString() + ' ' + this.operator + ' ' + this.secondNumber?.toString();
+    } else {
+      // if operator is not set, then we are entering the first number
+      this.firstNumber = numberValue;
+      this.history = this.firstNumber?.toString();
+    }
+    // this.firstNumber = numberValue;
+    // this.history = this.firstNumber.toString();
+  }
+
+  addOperatorValueToVariable(operatorValue: string) {
+    console.log('Operator clicked: ', operatorValue);
+    this.operator = operatorValue;
+    this.history = this.firstNumber?.toString() + ' ' + this.operator;
+  }
+
+  generateResult() {
+    if (this.firstNumber && this.secondNumber && this.operator) {
+      if (this.operator === '+') {
+        this.result = this.firstNumber + this.secondNumber;
+      }
+    }
   }
 }
