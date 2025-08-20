@@ -9,4 +9,20 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('calculator');
+
+  // variable to store first number
+  firstNumber: number | undefined;
+  // variable to store second number
+  secondNumber: number | undefined;
+  // variable to store operator
+  operator: string | undefined;
+  // variable to store result
+  result: string | undefined;
+
+  addNumberValueToVariable(numberValue: number) {
+    // code that needs to be executes
+    console.log('Number clicked: ', numberValue);
+    this.firstNumber = numberValue;
+    this.result = this.firstNumber.toString();
+  }
 }
