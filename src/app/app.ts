@@ -25,11 +25,16 @@ export class App {
     // code that needs to be executes
     console.log('Number clicked: ', numberValue);
     // check if operator is already set
-
+    if (this.firstNumber) {
+      this.firstNumber = this.firstNumber * 10 + numberValue;
+    } else {
+      this.firstNumber = numberValue;
+    }
     if (this.operator) {
       // if operator is set, then it means we are entering the second number
       // if value is already available, multiply it with 10 and add the new number
       this.secondNumber = numberValue;
+
       this.history =
         this.firstNumber?.toString() + ' ' + this.operator + ' ' + this.secondNumber?.toString();
     } else {
@@ -38,6 +43,7 @@ export class App {
       this.firstNumber = numberValue;
       this.history = this.firstNumber?.toString();
     }
+
     // this.firstNumber = numberValue;
     // this.history = this.firstNumber.toString();
   }
