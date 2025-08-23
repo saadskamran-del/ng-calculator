@@ -25,28 +25,62 @@ export class App {
     // code that needs to be executes
     console.log('Number clicked: ', numberValue);
     // check if operator is already set
-    if (this.firstNumber) {
-      this.firstNumber = this.firstNumber * 10 + numberValue;
-    } else {
-      this.firstNumber = numberValue;
-    }
     if (this.operator) {
-      // if operator is set, then it means we are entering the second number
-      // if value is already available, multiply it with 10 and add the new number
-      this.secondNumber = numberValue;
-
-      this.history =
-        this.firstNumber?.toString() + ' ' + this.operator + ' ' + this.secondNumber?.toString();
-    } else {
-      // if operator is not set, then we are entering the first number
-      // if value is already available, multiply it with 10 and add the new number
-      this.firstNumber = numberValue;
-      this.history = this.firstNumber?.toString();
     }
+    // step 01 - check if operator is set
+    if (this.operator) {
+      // step 02 - if operator is set, update secondNumber
+      // step 02-a - if secondNumber is already set, multiply it with 10 and add the new value to it and update history
+      if (this.secondNumber) {
+        this.secondNumber = this.secondNumber * 10 + numberValue;
+        this.history = this.firstNumber?.toString() + ' ' + this.operator + ' ' + this.secondNumber;
+      } else {
+        // step 02-b - if secondNumber is not set, simply add the value to secondNumber and update history
+        this.secondNumber = numberValue;
+        this.history = this.firstNumber?.toString() + ' ' + this.operator + ' ' + this.secondNumber;
+      }
+    } else {
+      // set 03 - if operator is not set, update firstNumber
+      if (this.firstNumber) {
+        this.history = this.firstNumber?.toString();
+      }
 
-    // this.firstNumber = numberValue;
-    // this.history = this.firstNumber.toString();
+      // step 03-a - if firstNumber is already set, multiply it with 10 and add the new value to it and update history
+      if (this.firstNumber) {
+        this.firstNumber = this.firstNumber * 10 + numberValue;
+        this.history = this.firstNumber?.toString();
+      }
+      // step 03-b - if firstNumber is not set, simply add the value to firstNumber and update history
+      else {
+        this.firstNumber = numberValue;
+        this.history = this.firstNumber?.toString();
+      }
+    }
   }
+  // // code that needs to be executes
+  // console.log('Number clicked: ', numberValue);
+  // // check if operator is already set
+  // if (this.firstNumber) {
+  //   this.firstNumber = this.firstNumber * 10 + numberValue;
+  // } else {
+  //   this.firstNumber = numberValue;
+  // }
+  // if (this.operator) {
+  //   // if operator is set, then it means we are entering the second number
+  //   // if value is already available, multiply it with 10 and add the new number
+  //   this.secondNumber = numberValue;
+
+  //   this.history =
+  //     this.firstNumber?.toString() + ' ' + this.operator + ' ' + this.secondNumber?.toString();
+  // } else {
+  //   // if operator is not set, then we are entering the first number
+  //   // if value is already available, multiply it with 10 and add the new number
+  //   this.firstNumber = numberValue;
+  //   this.history = this.firstNumber?.toString();
+  // }
+
+  // // this.firstNumber = numberValue;
+  // // this.history = this.firstNumber.toString();
 
   addOperatorValueToVariable(operatorValue: string) {
     console.log('Operator clicked: ', operatorValue);
