@@ -116,13 +116,10 @@ export class App {
     // else if firstNumber, clear it
     if (this.secondNumber) {
       this.secondNumber = undefined;
-      this.history = this.firstNumber?.toString() + ' ' + this.operator;
     } else if (this.operator) {
       this.operator = undefined;
-      this.history = this.firstNumber?.toString();
     } else if (this.firstNumber) {
       this.firstNumber = undefined;
-      this.history = undefined;
     }
   }
 }
